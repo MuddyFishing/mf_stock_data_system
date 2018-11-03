@@ -134,4 +134,4 @@ def stat_index_calculate(tmp_datetime):
 # main函数入口
 if __name__ == '__main__':
     # 计算买卖。
-    tmp_datetime = common.run_with_args(stat_index_calculate)
+    common.run_with_args(stat_index_calculate)

@@ -63,9 +63,9 @@ RUN mkdir -p /etc/cron.minutely && mkdir -p /etc/cron.hourly && mkdir -p /etc/cr
     echo "SHELL=/bin/sh \n\
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin \n\
 # min   hour    day     month   weekday command \n\
-*/1     *       *       *       *       /bin/run-parts /etc/cron.minutely \n\
-10       *       *       *       *       /bin/run-parts /etc/cron.hourly \n\
-30       16       *       *       *       /bin/run-parts /etc/cron.daily \n\
+*/1     *       *       *       1,2,3,4,5       /bin/run-parts /etc/cron.minutely \n\
+10       *       *       *       1,2,3,4,5       /bin/run-parts /etc/cron.hourly \n\
+30       16       *       *       1,2,3,4,5       /bin/run-parts /etc/cron.daily \n\
 30       17       1,10,20       *       *       /bin/run-parts /etc/cron.monthly \n" > /var/spool/cron/crontabs/root && \
     chmod 600 /var/spool/cron/crontabs/root
 

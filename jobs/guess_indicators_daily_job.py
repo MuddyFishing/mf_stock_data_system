@@ -297,9 +297,9 @@ def apply_guess(tmp, stock_column):
 # main函数入口
 if __name__ == '__main__':
     # 使用方法传递。
-    tmp_datetime = common.run_with_args(stat_all_batch)
+    common.run_with_args(stat_all_batch)
     # 二次筛选数据。
-    tmp_datetime = common.run_with_args(stat_all_lite)
+    common.run_with_args(stat_all_lite)
 
 
 ####################### 老方法，弃用了。#######################
