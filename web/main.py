@@ -1,6 +1,14 @@
 #!/usr/local/bin/python3
 # -*- coding: utf-8 -*-
 
+import sys
+from os.path import dirname, abspath, join, sep
+lib_path = dirname(dirname(abspath(__file__)))
+assert lib_path.split(sep)[-1].lower() == 'mf_stock_data_system'
+# sys.path.append(lib_path)
+sys.path.insert(0, lib_path)
+print('lib_path folder appended to path: ', lib_path)
+
 import os.path
 import torndb
 import tornado.escape
@@ -14,6 +22,7 @@ import web.dataTableHandler as dataTableHandler
 import web.dataEditorHandler as dataEditorHandler
 import web.dataIndicatorsHandler as dataIndicatorsHandler
 import web.base as webBase
+
 
 class Application(tornado.web.Application):
     def __init__(self):
@@ -55,10 +64,13 @@ class HomeHandler(webBase.BaseHandler):
 def main():
     tornado.options.parse_command_line()
     http_server = tornado.httpserver.HTTPServer(Application())
-    port = 9999
+    port = 9999 
     http_server.listen(port)
     tornado.ioloop.IOLoop.current().start()
 
 
 if __name__ == "__main__":
+    print("http://127.0.0.1:9999/")
+    print("Press Ctrl+C to quit")
+
     main()

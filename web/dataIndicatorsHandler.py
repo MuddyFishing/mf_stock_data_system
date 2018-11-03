@@ -14,7 +14,7 @@ import stockstats
 import numpy as np
 import pandas as pd
 from bokeh.layouts import gridplot
-from bokeh.palettes import Category20
+# from bokeh.palettes import Category20
 from math import radians
 from bokeh.models import DatetimeTickFormatter
 
@@ -42,7 +42,7 @@ class GetDataIndicatorsHandler(webBase.BaseHandler):
 
             # print(stock) [186 rows x 14 columns]
             # 初始化统计类
-            # stockStat = stockstats.StockDataFrame.retype(pd.read_csv("002032.csv"))
+            stockStat = stockstats.StockDataFrame.retype(pd.read_csv("002032.csv"))
             stockStat = stockstats.StockDataFrame.retype(stock)
             batch_add(comp_list, stockStat)
 

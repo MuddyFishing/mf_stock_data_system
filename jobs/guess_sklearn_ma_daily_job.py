@@ -1,7 +1,7 @@
 #!/usr/local/bin/python3
 # -*- coding: utf-8 -*-
 
-
+import __init__
 import libs.common as common
 import pandas as pd
 import numpy as np
@@ -68,7 +68,7 @@ def stat_all_batch(tmp_datetime):
         print(stock_sklearn.head())
         stock_sklearn_apply = stock_sklearn.apply(apply_sklearn, axis=1)  # , axis=1)
         # 重命名
-        del stock_sklearn_apply["date"]  # 合并前删除 date 字段。
+        # del stock_sklearn_apply["date"]  # 合并前删除 date 字段。
         # 合并数据
         data_new = pd.merge(data, stock_sklearn_apply, on=['code'], how='left')
         # for index, row in data.iterrows():
@@ -143,4 +143,4 @@ def apply_sklearn(data):
 # main函数入口
 if __name__ == '__main__':
     # 使用方法传递。
-    tmp_datetime = common.run_with_args(stat_all_batch)
+    common.run_with_args(stat_all_batch)
