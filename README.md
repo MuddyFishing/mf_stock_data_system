@@ -4,19 +4,19 @@
 
 ```
 mkdir -p /data/mariadb/data
-docker pull pythonstock/pythonstock:latest
+docker pull muddyfishing/mf_stock_data_system:v0.1
 docker pull mariadb:latest
 
 docker run --name mariadb -v /data/mariadb/data:/var/lib/mysql \
     -e MYSQL_ROOT_PASSWORD=mariadb -p 3306:3306 -d mariadb:latest
 
-docker run -itd --link=mariadb --name stock  \
+docker run -itd --link=mariadb --name mf_stock_data_system  \
     -p 8888:8888 \
     -p 6006:6006 \
     -p 9999:9999 \
     -p 8500:8500 \
     -p 9001:9001 \
-    pythonstock/pythonstock:latest
+    muddyfishing/mf_stock_data_system:v0.1
 
 ```
 
@@ -94,10 +94,10 @@ http://docs.sqlalchemy.org/en/latest/core/reflection.html
 ### 3，web使用datatable显示报表
 
 显示货币供应量：
- ![image](https://raw.githubusercontent.com/pythonstock/stock/master/web/static/img/stock-data-01.png)
+ ![image](https://raw.githubusercontent.com/muddyfishing/mf_stock_data_system/master/web/static/img/stock-data-01.png)
 
  显示存款准备金率：
- ![image](https://raw.githubusercontent.com/pythonstock/stock/master/web/static/img/stock-data-02.png)
+ ![image](https://raw.githubusercontent.com/muddyfishing/mf_stock_data_system/master/web/static/img/stock-data-02.png)
 
 ### 4，使用pandas处理重复数据
 
@@ -119,7 +119,7 @@ https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.drop_dup
 >
 > 4，按照多个字段进行筛选查询。
 
- ![image](https://raw.githubusercontent.com/pythonstock/stock/master/web/static/img/stock-data-04.png)
+ ![image](https://raw.githubusercontent.com/muddyfishing/mf_stock_data_system/master/web/static/img/stock-data-04.png)
 
 
 ### 6，增加对字典表通用修改
