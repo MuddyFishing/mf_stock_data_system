@@ -53,9 +53,11 @@ RUN echo `date +%Y-%m-%d:%H:%M:%S` >> /etc/docker.build && \
 ENV LANG=zh_CN.UTF-8
 ENV LC_CTYPE=zh_CN.UTF-8
 ENV LC_ALL=C
-ENV PYTHONPATH=/data/stock
+ENV PYTHONPATH=/data/mf_stock_data_system
 
 WORKDIR /data
+RUN git clone https://github.com/MuddyFishing/mf_stock_data_system /data/
+
 
 #add cron sesrvice.
 #每分钟，每小时1分钟，每天1点1分，每月1号执行
@@ -74,9 +76,9 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin \n\
 EXPOSE 8888 9999 6006 8500 9001
 
 #经常修改放到最后：
-ADD jobs /data/stock/jobs
-ADD libs /data/stock/libs
-ADD web /data/stock/web
+ADD jobs /data/mf_stock_data_system/jobs
+ADD libs /data/mf_stock_data_system/libs
+ADD web /data/mf_stock_data_system/web
 ADD supervisor /etc/supervisor
 
 ADD jobs/cron.minutely /etc/cron.minutely
@@ -84,7 +86,7 @@ ADD jobs/cron.hourly /etc/cron.hourly
 ADD jobs/cron.daily /etc/cron.daily
 ADD jobs/cron.monthly /etc/cron.monthly
 
-RUN mkdir -p /data/logs && ls /data/stock/ && chmod 755 /data/stock/jobs/run_* &&  \
+RUN mkdir -p /data/logs && ls /data/mf_stock_data_system/ && chmod 755 /data/mf_stock_data_system/jobs/run_* &&  \
     chmod 755 /etc/cron.minutely/* && chmod 755 /etc/cron.hourly/* && \
     chmod 755 /etc/cron.daily/* && chmod 755 /etc/cron.monthly/*
 
