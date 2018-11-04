@@ -1,7 +1,7 @@
 #!/usr/local/bin/python3
 # -*- coding: utf-8 -*-
 
-import __init__
+
 import libs.common as common
 import sys
 import time
@@ -127,4 +127,4 @@ def apply_guess(tmp):
 # main函数入口
 if __name__ == '__main__':
     # 使用方法传递。
-    common.run_with_args(stat_index_all)
+    tmp_datetime = common.run_with_args(stat_index_all)

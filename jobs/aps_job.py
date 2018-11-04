@@ -1,7 +1,5 @@
 #!/usr/local/bin/python3
 # -*- coding: utf-8 -*-
-
-import __init__
 from pytz import utc
 from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
 from apscheduler.schedulers.blocking import BlockingScheduler

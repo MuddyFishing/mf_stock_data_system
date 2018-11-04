@@ -1,6 +1,6 @@
 #!/bin/sh
 
-DOCKER_TAG=muddyfishing/mf_stock_data_system:v0.1
+DOCKER_TAG=pythonstock/pythonstock:latest
 
 echo " docker build -f Dockerfile -t ${DOCKER_TAG} ."
 docker build -f Dockerfile -t ${DOCKER_TAG} .

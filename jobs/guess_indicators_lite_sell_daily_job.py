@@ -1,7 +1,7 @@
 #!/usr/local/bin/python3
 # -*- coding: utf-8 -*-
 
-import __init__
+
 import libs.common as common
 import pandas as pd
 import numpy as np
@@ -134,4 +134,4 @@ def stat_index_calculate(tmp_datetime):
 # main函数入口
 if __name__ == '__main__':
     # 计算买卖。
-    common.run_with_args(stat_index_calculate)
+    tmp_datetime = common.run_with_args(stat_index_calculate)

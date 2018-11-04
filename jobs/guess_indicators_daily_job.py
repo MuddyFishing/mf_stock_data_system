@@ -1,7 +1,7 @@
 #!/usr/local/bin/python3
 # -*- coding: utf-8 -*-
 
-import __init__
+
 import libs.common as common
 import pandas as pd
 import numpy as np
@@ -297,9 +297,9 @@ def apply_guess(tmp, stock_column):
 # main函数入口
 if __name__ == '__main__':
     # 使用方法传递。
-    common.run_with_args(stat_all_batch)
+    tmp_datetime = common.run_with_args(stat_all_batch)
     # 二次筛选数据。
-    common.run_with_args(stat_all_lite)
+    tmp_datetime = common.run_with_args(stat_all_lite)
 
 
 ####################### 老方法，弃用了。#######################

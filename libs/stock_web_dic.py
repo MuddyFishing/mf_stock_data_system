@@ -93,7 +93,8 @@ STOCK_WEB_DATA_LIST.append(
                  "undp", "perundp", "rev", "profit", "gpr", "npr", "holders"],
         column_names=["代码", "名称", "所属行业", "地区", "市盈率", "流通股本(亿)", "总股本(亿)", "总资产(万)", "流动资产",
                       "固定资产", "公积金", "每股公积金", "每股收益", "每股净资", "市净率", "上市日期", "未分利润",
-                      "每股未分配", "收入同比(%)", "利润同比(%)", "毛利率(%)", "净利润率(%)", "股东人数"],
+                      "每股未分配", "收入同比(%)", "利润同比(%)", "毛利率(%)", "净利润率(%)", "股东人数"
+                      ],
         primary_key=[],
         order_by=" code asc "
     )
@@ -340,20 +341,6 @@ STOCK_WEB_DATA_LIST.append(
     )
 )
 
-STOCK_WEB_DATA_LIST.append(
-    StockWebData(
-        mode="query",
-        type="持仓管理",
-        name="持仓管理",
-        table_name="user_stock",
-        columns=["code", "date", "price", "shares", "commission_rate", "tax_rate", "comment"],
-        column_names=["代码", "日期", "价格", "份额", "佣金", "费率", "备注"],
-        primary_key=[],
-        order_by=" date desc  "
-    )
-)
-
-
 STOCK_WEB_DATA_MAP = {}
 WEB_EASTMONEY_URL = "http://quote.eastmoney.com/%s.html"
 # 再拼接成Map使用。
@@ -361,7 +348,6 @@ for tmp in STOCK_WEB_DATA_LIST:
     try:
         # 增加columns 字段中的【东方财富】
         tmp_idx = tmp.columns.index("code")
-        # tmp.columns.insert(tmp_idx + 1, "eastmoney")
         tmp.column_names.insert(tmp_idx + 1, "东方财富")
     except  Exception as e:
         print("error :", e)
