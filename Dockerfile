@@ -56,7 +56,8 @@ ENV LC_ALL=C
 ENV PYTHONPATH=/data/mf_stock_data_system
 
 WORKDIR /data
-RUN git clone https://github.com/MuddyFishing/mf_stock_data_system /data/
+WORKDIR /data/mf_stock_data_system
+RUN git clone https://github.com/MuddyFishing/mf_stock_data_system /data/mf_stock_data_system
 
 
 #add cron sesrvice.
