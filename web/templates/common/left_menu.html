@@ -23,20 +23,20 @@
             <!--</a>-->
             <!--<b class="arrow"></b>-->
             <li class="submenu">
-                    <li class="open" style="display:none;">
-                    {% set loopType = "" %}
-                    {% for leftMenuTmp in leftMenu.leftMenuList %}
+                <li class="open" style="display:none;">
+                {% set loopType = "" %}
+                {% for leftMenuTmp in leftMenu.leftMenuList %}
 
-                        {% if leftMenuTmp.type != loopType %}
-                        </li>
-                        <li class="open">
-                            {% set loopType = leftMenuTmp.type %}
-                            <a href="#" class="dropdown-toggle">
-                                <i class="menu-icon fa fa-pencil-square-o"></i>
-                                {{ leftMenuTmp.type }}
-                                <b class="arrow fa fa-angle-down"></b>
-                            </a>
-                            <b class="arrow"></b>
+                    {% if leftMenuTmp.type != loopType %}
+                    
+                    <li class="open">
+                        {% set loopType = leftMenuTmp.type %}
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-pencil-square-o"></i>
+                            {{ leftMenuTmp.type }}
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+                        <b class="arrow"></b>
 
                         {% end %}
 
@@ -50,10 +50,10 @@
                             </li>
                         </ul>
 
-                    {% end %}
-                        </li>
-            </ul>
-
+                        {% end %}
+                    </li>
+                </li>
+            </li>
         </li>
     </ul><!-- /.nav-list -->
 

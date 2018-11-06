@@ -1,7 +1,6 @@
 #!/usr/local/bin/python3
 # -*- coding: utf-8 -*-
 
-
 import libs.common as common
 import sys
 import time
@@ -95,4 +94,4 @@ if __name__ == '__main__':
         create_new_database()
     # 执行数据初始化。
     # 使用方法传递。
-    tmp_datetime = common.run_with_args(stat_all)
+    common.run_with_args(stat_all)
