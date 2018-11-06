@@ -2,37 +2,49 @@
 
 mkdir -p /data/logs
 DATE=`date +%Y-%m-%d:%H:%M:%S`
+DATE_=`date +%H:%M:%S`
 
-echo "###################"$DATE"###################" >> /data/logs/daily.0.log
-#增加每日，龙虎榜数据。
-/usr/local/bin/python3 /data/stock/jobs/daily_job.py >> /data/logs/daily.0.log
+DATE1=`date -d "$DATE_" +%s`
+DATE2=`date -d 16:30:00 +%s`
 
-echo "###################"$DATE"###################" >> /data/logs/daily.1.log
-#增加获得今日全部数据和大盘数据
-/usr/local/bin/python3 /data/stock/jobs/18h_daily_job.py >> /data/logs/daily.1.log
+if [ $DATE1 -ge $DATE2 ]; then
+    echo "$DATE1 >= $DATE2"
+    echo "it's time to begin update..."
 
-echo "###################"$DATE"###################" >> /data/logs/daily.2.log
-#使用波峰波谷方法猜想股票涨跌
-/usr/local/bin/python3 /data/stock/jobs/guess_period_daily_job.py >> /data/logs/daily.2.log
+    echo "###################"$DATE"###################" >> /data/logs/daily.0.log
+    #增加每日，龙虎榜数据。
+    /usr/local/bin/python3 /data/stock/jobs/daily_job.py >> /data/logs/daily.0.log
 
-echo "###################"$DATE"###################" >> /data/logs/daily.3.log
-#使用 回归的方法预测。
-/usr/local/bin/python3 /data/stock/jobs/guess_return_daily_job.py >> /data/logs/daily.3.log
+    echo "###################"$DATE"###################" >> /data/logs/daily.1.log
+    #增加获得今日全部数据和大盘数据
+    /usr/local/bin/python3 /data/stock/jobs/18h_daily_job.py >> /data/logs/daily.1.log
 
-echo "###################"$DATE"###################" >> /data/logs/daily.4.log
-#使用股票指标预测。
-/usr/local/bin/python3 /data/stock/jobs/guess_indicators_daily_job.py >> /data/logs/daily.4.log
+    echo "###################"$DATE"###################" >> /data/logs/daily.2.log
+    #使用波峰波谷方法猜想股票涨跌
+    /usr/local/bin/python3 /data/stock/jobs/guess_period_daily_job.py >> /data/logs/daily.2.log
 
-echo "###################"$DATE"###################" >> /data/logs/daily.5.log
-#使用股票指标预测购买。
-/usr/local/bin/python3 /data/stock/jobs/guess_indicators_lite_buy_daily_job.py >> /data/logs/daily.5.log
+    echo "###################"$DATE"###################" >> /data/logs/daily.3.log
+    #使用 回归的方法预测。
+    /usr/local/bin/python3 /data/stock/jobs/guess_return_daily_job.py >> /data/logs/daily.3.log
 
-echo "###################"$DATE"###################" >> /data/logs/daily.6.log
-#使用股票指标预测卖出。
-/usr/local/bin/python3 /data/stock/jobs/guess_indicators_lite_sell_daily_job.py >> /data/logs/daily.6.log
+    echo "###################"$DATE"###################" >> /data/logs/daily.4.log
+    #使用股票指标预测。
+    /usr/local/bin/python3 /data/stock/jobs/guess_indicators_daily_job.py >> /data/logs/daily.4.log
 
-#清除前3天数据。
-DATE_20=`date -d '-20 days' +%Y-%m-%d`
-MONTH_20=`date -d '-20 days' +%Y-%m`
-echo "rm -f /data/cache/hist_data_cache/$MONTH_20/$DATE_20"
-rm -f /data/cache/hist_data_cache/$MONTH_20/$DATE_20
+    echo "###################"$DATE"###################" >> /data/logs/daily.5.log
+    #使用股票指标预测购买。
+    /usr/local/bin/python3 /data/stock/jobs/guess_indicators_lite_buy_daily_job.py >> /data/logs/daily.5.log
+
+    echo "###################"$DATE"###################" >> /data/logs/daily.6.log
+    #使用股票指标预测卖出。
+    /usr/local/bin/python3 /data/stock/jobs/guess_indicators_lite_sell_daily_job.py >> /data/logs/daily.6.log
+
+    #清除前3天数据。
+    DATE_20=`date -d '-20 days' +%Y-%m-%d`
+    MONTH_20=`date -d '-20 days' +%Y-%m`
+    echo "rm -f /data/cache/hist_data_cache/$MONTH_20/$DATE_20"
+    rm -f /data/cache/hist_data_cache/$MONTH_20/$DATE_20
+else
+    echo "$DATE1 < $DATE2"
+    echo "it's too early to update..."
+fi
