@@ -341,6 +341,20 @@ STOCK_WEB_DATA_LIST.append(
     )
 )
 
+STOCK_WEB_DATA_LIST.append(
+    StockWebData(
+        mode="query",
+        type="持仓管理",
+        name="持仓管理",
+        table_name="user_stock",
+        columns=["code", "date", "price", "shares", "commission_rate", "tax_rate", "comment"],
+        column_names=["代码", "日期", "价格", "份额", "佣金", "费率", "备注"],
+        primary_key=[],
+        order_by=" date desc  "
+    )
+)
+
+
 STOCK_WEB_DATA_MAP = {}
 WEB_EASTMONEY_URL = "http://quote.eastmoney.com/%s.html"
 # 再拼接成Map使用。
@@ -348,6 +362,7 @@ for tmp in STOCK_WEB_DATA_LIST:
     try:
         # 增加columns 字段中的【东方财富】
         tmp_idx = tmp.columns.index("code")
+        # tmp.columns.insert(tmp_idx + 1, "eastmoney")
         tmp.column_names.insert(tmp_idx + 1, "东方财富")
     except  Exception as e:
         print("error :", e)
