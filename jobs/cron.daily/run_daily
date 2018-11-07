@@ -8,8 +8,8 @@ DATE1=`date -d "$DATE_" +%s`
 DATE2=`date -d 16:30:00 +%s`
 
 if [ $DATE1 -ge $DATE2 ]; then
-    echo "$DATE1 >= $DATE2"
-    echo "it's time to begin update..."
+    echo "$DATE1 >= $DATE2" >> /data/logs/daily.1.log
+    echo "it's time to begin update..." >> /data/logs/daily.1.log
 
     echo "###################"$DATE"###################" >> /data/logs/daily.0.log
     #增加每日，龙虎榜数据。
@@ -45,6 +45,6 @@ if [ $DATE1 -ge $DATE2 ]; then
     echo "rm -f /data/cache/hist_data_cache/$MONTH_20/$DATE_20"
     rm -f /data/cache/hist_data_cache/$MONTH_20/$DATE_20
 else
-    echo "$DATE1 < $DATE2"
-    echo "it's too early to update..."
+    echo "$DATE1 < $DATE2" >> /data/logs/daily.1.log
+    echo "it's too early to update..." >> /data/logs/daily.1.log
 fi
