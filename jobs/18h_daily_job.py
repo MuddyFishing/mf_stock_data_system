@@ -78,6 +78,6 @@ def stat_today_all(tmp_datetime):
 # main函数入口
 if __name__ == '__main__':
     # 使用方法传递。
-    tmp_datetime = common.run_with_args(stat_index_all)
+    common.run_with_args(stat_index_all)
     time.sleep(5)  # 停止5秒
-    tmp_datetime = common.run_with_args(stat_today_all)
+    common.run_with_args(stat_today_all)

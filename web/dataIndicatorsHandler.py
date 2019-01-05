@@ -48,7 +48,8 @@ class GetDataIndicatorsHandler(webBase.BaseHandler):
 
 
         except Exception as e:
-            logging.info("error :", e)
+            # logging.info("{} {}".format("error :", e))
+            logging.info(e)
         logging.info("#################### GetStockHtmlHandlerEnd ####################")
 
         self.render("stock_indicators.html", comp_list=comp_list, leftMenu=webBase.GetLeftMenu(self.request.uri))
@@ -242,7 +243,8 @@ def batch_add(comp_list, stockStat):
 # 增加画图方法
 def add_plot(stockStat, conf):
     p_list = []
-    logging.info("############################", type(conf["dic"]))
+    # logging.info("{} {}".format("############################", type(conf["dic"])))
+    logging.info(type(conf["dic"]))
     # 循环 多个line 信息。
     for key, val in enumerate(conf["dic"]):
         logging.info(key)
