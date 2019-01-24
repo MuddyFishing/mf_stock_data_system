@@ -86,4 +86,4 @@ def stat_all(tmp_datetime):
 # main函数入口
 if __name__ == '__main__':
     # 使用方法传递。
-    tmp_datetime = common.run_with_args(stat_all)
+    common.run_with_args(stat_all)

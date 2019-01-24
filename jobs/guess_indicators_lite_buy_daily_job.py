@@ -123,4 +123,4 @@ def apply_merge(tmp):
 # main函数入口
 if __name__ == '__main__':
     # 二次筛选数据。
-    tmp_datetime = common.run_with_args(stat_all_lite)
+    common.run_with_args(stat_all_lite)

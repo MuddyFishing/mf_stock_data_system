@@ -58,19 +58,19 @@ def stat_today_all(tmp_datetime):
     else:
         print("no data .")
 
-    time.sleep(5)  # 停止5秒
+    # time.sleep(5)  # 停止5秒
 
-    data = ts.get_index()
-    # 处理重复数据，保存最新一条数据。最后一步处理，否则concat有问题。
-    if not data is None and len(data) > 0:
-        # 插入数据库。
-        # del data["reason"]
-        data["date"] = datetime_int  # 修改时间成为int类型。
-        data = data.drop_duplicates(subset="code", keep="last")
-        data.head(n=1)
-        common.insert_db(data, "ts_index_all", False, "`date`,`code`")
-    else:
-        print("no data .")
+    # data = ts.get_index()
+    # # 处理重复数据，保存最新一条数据。最后一步处理，否则concat有问题。
+    # if not data is None and len(data) > 0:
+    #     # 插入数据库。
+    #     # del data["reason"]
+    #     data["date"] = datetime_int  # 修改时间成为int类型。
+    #     data = data.drop_duplicates(subset="code", keep="last")
+    #     data.head(n=1)
+    #     common.insert_db(data, "ts_index_all", False, "`date`,`code`")
+    # else:
+    #     print("no data .")
 
     print(datetime_str)
 
